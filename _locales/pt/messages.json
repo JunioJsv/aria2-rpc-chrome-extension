@@ -1,5 +1,44 @@
 {
     "extensionName": {
         "message": "Enviar para Aria2 RPC"
+    },
+    "configTitle": {
+        "message": "Configurações do Aria2"
+    },
+    "configSaveSuccess": {
+        "message": "Configurações Salvas"
+    },
+    "configSaveSuccessMessage": {
+        "message": "As configurações do Aria2 foram atualizadas com sucesso!"
+    },
+    "rpcUrlLabel": {
+        "message": "Aria2 RPC URL"
+    },
+    "rpcSecretLabel": {
+        "message": "Aria2 Secret (opcional)"
+    },
+    "rpcSecretPlaceholder": {
+        "message": "Sua senha"
+    },
+    "downloadSent": {
+        "message": "Download enviado!"
+    },
+    "downloadSentMessage": {
+        "message": "O Aria2 está baixando o arquivo."
+    },
+    "connectionError": {
+        "message": "Erro de conexão"
+    },
+    "connectionErrorMessage": {
+        "message": "Não foi possível se conectar ao Aria2."
+    },
+    "aria2Error": {
+        "message": "Erro no Aria2"
+    },
+    "aria2ErrorMessage": {
+        "message": "O download não pôde ser enviado."
+    },
+    "save": {
+        "message": "Salvar"
     }
 }

@@ -37,14 +37,23 @@ function sendToAria2(downloadId, downloadUrl, rpcUrl, rpcSecret) {
         .then(response => response.json())
         .then(data => {
             if (data.result) {
-                showNotification("Download enviado!", "O Aria2 está baixando o arquivo.");
+                showNotification(
+                    chrome.i18n.getMessage("downloadSent"),
+                    chrome.i18n.getMessage("downloadSentMessage"),
+                );
                 chrome.downloads.erase({id: downloadId})
             } else {
-                showNotification("Erro no Aria2", "O download não pôde ser enviado.");
+                showNotification(
+                    chrome.i18n.getMessage("aria2Error"),
+                    chrome.i18n.getMessage("aria2ErrorMessage"),
+                );
             }
         })
         .catch(error => {
-            showNotification("Erro de conexão", "Não foi possível se conectar ao Aria2.");
+            showNotification(
+                chrome.i18n.getMessage("connectionError"),
+                chrome.i18n.getMessage("connectionErrorMessage"),
+            );
         });
 }
 

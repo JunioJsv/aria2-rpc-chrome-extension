@@ -1,3 +1,4 @@
+localizeHtmlPage();
 document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.get(['ARIA2_RPC_URL', 'ARIA2_SECRET'], (data) => {
         document.getElementById('rpcUrl').value = data.ARIA2_RPC_URL || "http://localhost:6800/jsonrpc";
@@ -13,9 +14,10 @@ document.getElementById('saveBtn').addEventListener('click', () => {
         chrome.notifications.create({
             type: "basic",
             iconUrl: "icon.png",
-            title: "Configurações Salvas",
-            message: "As configurações do Aria2 foram atualizadas com sucesso!",
+            title: chrome.i18n.getMessage("configSaveSuccess"),
+            message: chrome.i18n.getMessage("configSaveSuccessMessage"),
             priority: 2
         });
+        window.close();
     });
 });
