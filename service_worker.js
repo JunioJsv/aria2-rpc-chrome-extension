@@ -1,3 +1,5 @@
+import {showNotification} from "./notifications.js";
+
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.get(['ARIA2_RPC_URL', 'ARIA2_SECRET'], (data) => {
         if (!data.ARIA2_RPC_URL) {
@@ -9,10 +11,21 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
+chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
+    if (downloadItem.fileSize > 0) suggest()
+})
+
 chrome.downloads.onCreated.addListener((downloadItem) => {
-    chrome.downloads.cancel(downloadItem.id, () => {
+    let {id: downloadId, finalUrl: downloadUrl, fileSize} = downloadItem
+    if (fileSize < 1) return
+    chrome.downloads.cancel(downloadId, () => {
         chrome.storage.local.get(['ARIA2_RPC_URL', 'ARIA2_SECRET'], (data) => {
-            sendToAria2(downloadItem.id, downloadItem.finalUrl, data.ARIA2_RPC_URL, data.ARIA2_SECRET);
+            sendToAria2(
+                downloadId,
+                downloadUrl,
+                data.ARIA2_RPC_URL,
+                data.ARIA2_SECRET,
+            );
         });
     });
 });
@@ -55,14 +68,4 @@ function sendToAria2(downloadId, downloadUrl, rpcUrl, rpcSecret) {
                 chrome.i18n.getMessage("connectionErrorMessage"),
             );
         });
-}
-
-function showNotification(title, message) {
-    chrome.notifications.create({
-        type: "basic",
-        iconUrl: "icon.png",
-        title: title,
-        message: message,
-        priority: 2
-    });
 }

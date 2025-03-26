@@ -5,7 +5,8 @@
     "version": "1.0",
     "permissions": ["downloads", "storage", "notifications"],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "service_worker.js",
+        "type": "module"
     },
     "host_permissions": ["<all_urls>"],
     "action": {
