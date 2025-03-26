@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Configurações do Aria2</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        padding: 10px;
+        margin: 0;
+        width: 250px;
+      }
+      h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Configurações do Aria2</h3>
+
+    <label for="rpcUrl">Aria2 RPC URL</label>
+    <input type="text" id="rpcUrl" placeholder="http://localhost:6800/jsonrpc" />
+
+    <label for="rpcSecret">Aria2 Secret (opcional)</label>
+    <input type="password" id="rpcSecret" placeholder="suasenha" />
+
+    <button id="saveBtn">Salvar</button>
+
+    <script src="config.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "default_locale": "en",
+    "name": "Send to Aria2 RPC",
+    "version": "1.0",
+    "permissions": ["downloads", "storage", "notifications"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": ["<all_urls>"],
+    "action": {
+        "default_popup": "config.html"
+    },
+    "icons": {
+        "128": "icon.png"
+    }
+}
